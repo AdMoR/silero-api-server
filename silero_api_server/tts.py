@@ -21,7 +21,7 @@ class SileroTtsService:
         self.sessions_path = None
 
         # Silero works fine on CPU
-        self.device = torch.device('gpu')
+        self.device = torch.device('cuda')
         #torch.set_num_threads(4)
         torchaudio.set_audio_backend("soundfile")
 
