@@ -18,12 +18,13 @@ torchaudio = { version = "^2.0.0+cu118", source = "torchcu118" }
 pydub = "^0.25.1"
 
 
+[[tool.poetry.source]]
+name = "torchcu118"
+url = "https://download.pytorch.org/whl/cu118"
+priority = "supplemental"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[[tool.poetry.source]]
-name = "torchcu118"
-url = "https://download.pytorch.org/whl/cu118"
-default = false
-secondary = true
+
