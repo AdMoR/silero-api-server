@@ -1,40 +1,29 @@
-[build-system]
-requires = ["hatchling","hatch-vcs"]
-build-backend = "hatchling.build"
-
-[project]
+[tool.poetry]
 name = "silero-api-server"
-authors = [
-  { name="Ouoertheo", email="ouoertheo@tomeofjamin.net" },
-]
-description = "A simple FastAPI server to host Silero TTS"
+version = "0.1.0"
+description = ""
+authors = ["admor"]
 readme = "README.md"
-requires-python = ">=3.7"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-]
-dependencies = [
-  "fastapi",
-  "loguru",
-  "pydantic",
-  "python-dotenv",
-  "torch",
-  "torchaudio",
-  "uvicorn",
-  "soundfile",
-  "numpy",
-  "pydub"
-]
-dynamic=["version"]
+packages = [{include = "silero_api_server"}]
 
-[project.urls]
-"Homepage" = "https://github.com/ouoertheo/silero-api-server"
-"Bug Tracker" = "https://github.com/ouoertheo/silero-api-server/issues"
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.104.1"
+pydantic = "^2.4.2"
+requests = "^2.31.0"
+uvicorn = "^0.23.2"
+loguru = "^0.7.2"
+torch = { version = "^2.1.0+cu118", source = "torchcu118" }
+torchaudio = { version = "^2.0.0+cu118", source = "torchcu118" }
+pydub = "^0.25.1"
 
-[tool.hatch.version]
-source = "vcs"
 
-[tool.hatch.build.targets.wheel]
-only-include = ["silero_api_server"]
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "torchcu118"
+url = "https://download.pytorch.org/whl/cu118"
+default = false
+secondary = true
